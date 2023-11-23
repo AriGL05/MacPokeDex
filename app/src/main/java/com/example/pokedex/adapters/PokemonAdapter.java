@@ -48,7 +48,6 @@ public class PokemonAdapter  extends RecyclerView.Adapter<PokemonAdapter.Pokemon
 
         public void setData(Pokemons p) {
             names.setText(p.getResults().getClass().getName());
-            pke.setImageDrawable(p.getResults().getClass().);
         }
     }
 }

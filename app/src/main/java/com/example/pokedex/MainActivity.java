@@ -5,13 +5,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.pokedex.models.Pokemons;
+
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +23,14 @@ public class MainActivity extends AppCompatActivity {
         getPokemon();
 
     }
-    private void getPokemon(){
-         Retrofit retrofit= new Retrofit.Builder()
+    private void getPokemon() {
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         PokemonInterface pokemonRequestInterface = retrofit.create(PokemonInterface.class);
 
-        Call<ServicePokemon> peticion = pokemonRequestInterface.getPokemon();
+        Call<Pokemons> peticion = pokemonRequestInterface.getPokemon();
 
+    }
 }

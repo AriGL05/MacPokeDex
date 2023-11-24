@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pokedex.R;
 import com.example.pokedex.models.Pokemons;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestHandler;
 
 import java.util.List;
 
@@ -47,7 +49,9 @@ public class PokemonAdapter  extends RecyclerView.Adapter<PokemonAdapter.Pokemon
         }
 
         public void setData(Pokemons p) {
+
             names.setText(p.getResults().getClass().getName());
+            Picasso.get().load(p.getResults().getClass().).into(pke);
         }
     }
 }

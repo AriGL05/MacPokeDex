@@ -11,13 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pokedex.R;
 import com.example.pokedex.models.Pokemons;
+import com.example.pokedex.models.Result;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestHandler;
 
 import java.util.List;
 
 public class PokemonAdapter  extends RecyclerView.Adapter<PokemonAdapter.PokemonHolder> {
-    private List<Pokemons> listp;
+    private List<Result> listp;
+
+    public PokemonAdapter(List<Result> listp) {
+        this.listp = listp;
+    }
+
     @NonNull
     @Override
     public PokemonAdapter.PokemonHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,7 +34,7 @@ public class PokemonAdapter  extends RecyclerView.Adapter<PokemonAdapter.Pokemon
 
     @Override
     public void onBindViewHolder(@NonNull PokemonAdapter.PokemonHolder holder, int position) {
-        Pokemons p = listp.get(position);
+        Result p = listp.get(position);
         holder.setData(p);
     }
 
@@ -48,10 +54,9 @@ public class PokemonAdapter  extends RecyclerView.Adapter<PokemonAdapter.Pokemon
             pke = itemView.findViewById(R.id.pokemon);
         }
 
-        public void setData(Pokemons p) {
-
-            names.setText(p.getResults().getClass().getName());
-            Picasso.get().load(p.getResults().getClass().).into(pke);
+        public void setData(Result p) {
+            names.setText(p.getName());
+            Picasso.get().load(p.getImageUrl()).into(pke);
         }
     }
 }

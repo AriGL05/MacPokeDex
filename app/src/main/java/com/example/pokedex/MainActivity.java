@@ -1,6 +1,8 @@
 package com.example.pokedex;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     Pokemons pokemons = response.body();
                     PokemonAdapter pokemonAdapter = new PokemonAdapter(pokemons.getResults());
                     recyclerView.setAdapter(pokemonAdapter);
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
                 }
             }
 
